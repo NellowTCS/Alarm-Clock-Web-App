@@ -316,7 +316,7 @@ const Alarm = () => {
 
         {/* Alarm Ringing Modal */}
         {ringingAlarm && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-30">
+          <div className="fixed inset-0 bg-white/10 backdrop-blur-sm flex items-center justify-center z-20">
             <div className="w-96 max-w-[90%] p-6 bg-white/80 backdrop-blur-3xl rounded-3xl shadow-2xl border border-white/20">
               <h2 className="text-2xl font-bold text-gray-900 text-center">
                 Alarm Ringing!
