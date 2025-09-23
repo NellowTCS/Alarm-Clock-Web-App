@@ -229,7 +229,7 @@ const Timer = () => {
 {finished && (
   <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
     {/* Backdrop */}
-    <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-md"></div>
+    <div className="absolute inset-0 bg-white/20 backdrop-blur-sm"></div>
 
     {/* Popup card */}
     <div className="relative bg-gradient-to-br from-pink-300/40 via-pink-200/30 to-white/40
