@@ -275,7 +275,7 @@ const Alarm = () => {
                   onChange={(e) =>
                     setNewAlarm({ ...newAlarm, time: e.target.value })
                   }
-                  className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-200 transition"
+                  className="w-full p-3 rounded-xl border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-200 transition"
                 />
                 <input
                   type="text"
