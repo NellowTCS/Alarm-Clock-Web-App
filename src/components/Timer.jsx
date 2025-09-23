@@ -232,7 +232,14 @@ const Timer = () => {
     <div className="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm"></div>
 
     {/* Popup card */}
-    <div className="relative bg-white bg-opacity-20 backdrop-blur-md rounded-3xl shadow-2xl p-8 text-center z-10 max-w-md w-full">
+    <div
+      className="relative rounded-3xl shadow-2xl p-8 text-center z-10 max-w-md w-full"
+      style={{
+        background: "rgba(255, 255, 255, 0.25)",
+        backdropFilter: "blur(16px)",
+        border: "1px solid rgba(255, 255, 255, 0.3)",
+      }}
+    >
       <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
         Time’s Up!
       </h2>
@@ -245,6 +252,7 @@ const Timer = () => {
     </div>
   </div>
 )}
+
 
     </div>
   );
