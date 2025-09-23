@@ -229,25 +229,24 @@ const Timer = () => {
 {finished && (
   <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
     {/* Backdrop */}
-    <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"></div>
+    <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-md"></div>
 
     {/* Popup card */}
-    <div className="relative bg-gradient-to-br from-white/30 via-pink-50/30 to-pink-100/30
-                    backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl p-8 text-center
-                    z-10 max-w-md w-full mx-auto">
-      <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
+    <div className="relative bg-gradient-to-br from-pink-300/40 via-pink-200/30 to-white/40
+                    backdrop-blur-2xl border border-pink-200/30 rounded-2xl shadow-[0_8px_32px_rgba(255,182,193,0.37)]
+                    p-8 text-center z-10 max-w-md w-full mx-auto">
+      <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
         Time’s Up!
       </h2>
       <button
         onClick={handleClose}
-        className="px-6 py-2 bg-pink-500 text-white font-medium rounded-full shadow-md hover:bg-pink-600 active:scale-95 transition transform duration-150"
+        className="px-6 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white font-medium rounded-full shadow-lg hover:shadow-xl active:scale-95 transition transform duration-150"
       >
         Close
       </button>
     </div>
   </div>
 )}
-
     </div>
   );
 };
