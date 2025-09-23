@@ -232,7 +232,9 @@ const Timer = () => {
     <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"></div>
 
     {/* Popup card */}
-    <div className="relative bg-white/30 backdrop-blur-lg border border-white/20 rounded-xl shadow-2xl p-8 text-center z-10 max-w-md w-full mx-auto">
+    <div className="relative bg-gradient-to-br from-white/30 via-pink-50/30 to-pink-100/30
+                    backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl p-8 text-center
+                    z-10 max-w-md w-full mx-auto">
       <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
         Time’s Up!
       </h2>
@@ -245,6 +247,7 @@ const Timer = () => {
     </div>
   </div>
 )}
+
     </div>
   );
 };
