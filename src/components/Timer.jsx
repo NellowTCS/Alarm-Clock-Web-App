@@ -225,26 +225,27 @@ const Timer = () => {
         </button>
       </div>
 
-      {/* Popup */}
-      {finished && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          {/* Backdrop */}
-          <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"></div>
+{/* Popup */}
+{finished && (
+  <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+    {/* Backdrop */}
+    <div className="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm"></div>
 
-          {/* Popup card */}
-          <div className="relative bg-white bg-opacity-95 rounded-2xl shadow-2xl p-8 text-center z-10 max-w-sm w-full">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
-              Time’s Up!
-            </h2>
-            <button
-              onClick={handleClose}
-              className="px-6 py-2 bg-pink-500 text-white font-medium rounded-full shadow-md hover:bg-pink-600 active:scale-95 transition transform duration-150"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+    {/* Popup card */}
+    <div className="relative bg-white bg-opacity-20 backdrop-blur-md rounded-3xl shadow-2xl p-8 text-center z-10 max-w-md w-full">
+      <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-6">
+        Time’s Up!
+      </h2>
+      <button
+        onClick={handleClose}
+        className="px-6 py-2 bg-pink-500 text-white font-medium rounded-full shadow-md hover:bg-pink-600 active:scale-95 transition transform duration-150"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
