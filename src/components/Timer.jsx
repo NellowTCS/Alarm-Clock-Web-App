@@ -184,46 +184,46 @@ const Timer = () => {
       </div>
 
       {/* HH:MM:SS input */}
-<div className="flex items-center gap-0 mt-8 bg-pink-50 bg-opacity-30 backdrop-blur-md rounded-full shadow-md px-3 py-2 hover:bg-pink-100 transition-colors duration-200">
-  <input
-    type="number"
-    min={0}
-    max={99}
-    value={hours}
-    onChange={(e) =>
-      setHours(Math.min(99, Math.max(0, parseInt(e.target.value) || 0)))
-    }
-    className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-200 rounded-l-full transition"
-  />
-  <span className="px-1 text-gray-600 select-none">:</span>
-  <input
-    type="number"
-    min={0}
-    max={59}
-    value={minutes}
-    onChange={(e) =>
-      setMinutes(Math.min(59, Math.max(0, parseInt(e.target.value) || 0)))
-    }
-    className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-200 transition"
-  />
-  <span className="px-1 text-gray-600 select-none">:</span>
-  <input
-    type="number"
-    min={0}
-    max={59}
-    value={seconds}
-    onChange={(e) =>
-      setSeconds(Math.min(59, Math.max(0, parseInt(e.target.value) || 0)))
-    }
-    className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-200 rounded-r-full transition"
-  />
-  <button
-    onClick={setTimer}
-    className="ml-3 px-6 py-2 bg-pink-300 text-black font-medium rounded-full shadow-md hover:bg-pink-400 active:scale-95 transition transform duration-150"
-  >
-    Set
-  </button>
-</div>
+      <div className="flex items-center gap-0 mt-8 bg-pink-50 bg-opacity-30 backdrop-blur-md rounded-full shadow-md px-3 py-2 hover:bg-pink-100 transition-colors duration-200">
+        <input
+          type="number"
+          min={0}
+          max={99}
+          value={hours}
+          onChange={(e) =>
+            setHours(Math.min(99, Math.max(0, parseInt(e.target.value) || 0)))
+          }
+          className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-200 rounded-l-full transition"
+        />
+        <span className="px-1 text-gray-600 select-none">:</span>
+        <input
+          type="number"
+          min={0}
+          max={59}
+          value={minutes}
+          onChange={(e) =>
+            setMinutes(Math.min(59, Math.max(0, parseInt(e.target.value) || 0)))
+          }
+          className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-200 transition"
+        />
+        <span className="px-1 text-gray-600 select-none">:</span>
+        <input
+          type="number"
+          min={0}
+          max={59}
+          value={seconds}
+          onChange={(e) =>
+            setSeconds(Math.min(59, Math.max(0, parseInt(e.target.value) || 0)))
+          }
+          className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-200 rounded-r-full transition"
+        />
+        <button
+          onClick={setTimer}
+          className="ml-3 px-6 py-2 bg-pink-300 text-black font-medium rounded-full shadow-md hover:bg-pink-400 active:scale-95 transition transform duration-150"
+        >
+          Set
+        </button>
+      </div>
 
       {/* Popup */}
       {finished && (
