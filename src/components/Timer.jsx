@@ -16,9 +16,18 @@ const Timer = () => {
   const circumference = 2 * Math.PI * radius;
   const [progress, setProgress] = useState(0);
 
+  const totalSet = hours * 3600 + minutes * 60 + seconds;
+
   // Initialize audio only once
   useEffect(() => {
     audioRef.current = new Audio("/alarm.mp3");
+  }, []);
+
+  // Cleanup interval on unmount
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, []);
 
   // Play alarm when finished
@@ -39,7 +48,11 @@ const Timer = () => {
     setSeconds(s);
 
     // Update circular progress
-    setProgress(totalSecondsRef.current > 0 ? totalSecondsRef.current / maxSecondsRef.current : 0);
+    setProgress(
+      totalSecondsRef.current > 0
+        ? totalSecondsRef.current / maxSecondsRef.current
+        : 0
+    );
   };
 
   const maxSecondsRef = useRef(0);
@@ -84,10 +97,9 @@ const Timer = () => {
 
   // Set timer (resets and starts instantly)
   const setTimer = () => {
-    const total = hours * 3600 + minutes * 60 + seconds;
-    if (total <= 0) return alert("⚠️ Time must be greater than 0");
-    totalSecondsRef.current = total;
-    maxSecondsRef.current = total;
+    if (totalSet <= 0) return;
+    totalSecondsRef.current = totalSet;
+    maxSecondsRef.current = totalSet;
     clearInterval(intervalRef.current);
     setFinished(false);
     setRunning(false);
@@ -158,7 +170,9 @@ const Timer = () => {
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-2xl font-light text-gray-700">{formatDisplay()}</span>
+            <span className="text-2xl font-light text-gray-700">
+              {formatDisplay()}
+            </span>
           </div>
         </div>
 
@@ -166,13 +180,13 @@ const Timer = () => {
         <div className="flex gap-4">
           <button
             onClick={reset}
-            className="px-6 py-2 bg-gray-100 text-gray-800 rounded-full font-medium shadow-md hover:bg-gray-200 active:scale-95 transition transform duration-150"
+            className="px-6 py-2 bg-gray-100 text-gray-800 rounded-full font-medium shadow-md hover:bg-gray-200 active:scale-95 transition transform duration-150 focus:outline-none focus:ring-2 focus:ring-gray-300"
           >
             Reset
           </button>
           <button
             onClick={running ? pause : start}
-            className={`px-6 py-2 rounded-full font-medium shadow-md text-white transition transform duration-150 active:scale-95 ${
+            className={`px-6 py-2 rounded-full font-medium shadow-md text-white transition transform duration-150 active:scale-95 focus:outline-none focus:ring-2 focus:ring-pink-200 ${
               running
                 ? "bg-yellow-400 hover:bg-yellow-500"
                 : "bg-pink-500 hover:bg-pink-600 text-black"
@@ -193,7 +207,8 @@ const Timer = () => {
           onChange={(e) =>
             setHours(Math.min(99, Math.max(0, parseInt(e.target.value) || 0)))
           }
-          className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-200 rounded-l-full transition"
+          className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-200 rounded-l-full transition"
+          aria-label="Hours"
         />
         <span className="px-1 text-gray-600 select-none">:</span>
         <input
@@ -204,7 +219,8 @@ const Timer = () => {
           onChange={(e) =>
             setMinutes(Math.min(59, Math.max(0, parseInt(e.target.value) || 0)))
           }
-          className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-200 transition"
+          className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-200 transition"
+          aria-label="Minutes"
         />
         <span className="px-1 text-gray-600 select-none">:</span>
         <input
@@ -215,38 +231,42 @@ const Timer = () => {
           onChange={(e) =>
             setSeconds(Math.min(59, Math.max(0, parseInt(e.target.value) || 0)))
           }
-          className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-200 rounded-r-full transition"
+          className="w-16 h-8 text-center bg-transparent text-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-200 rounded-r-full transition"
+          aria-label="Seconds"
         />
         <button
           onClick={setTimer}
-          className="ml-3 px-6 py-2 bg-pink-300 text-black font-medium rounded-full shadow-md hover:bg-pink-400 active:scale-95 transition transform duration-150"
+          disabled={totalSet <= 0}
+          className="ml-3 px-6 py-2 bg-pink-300 text-black font-medium rounded-full shadow-md hover:bg-pink-400 active:scale-95 transition transform duration-150 focus:outline-none focus:ring-2 focus:ring-pink-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Set
         </button>
       </div>
 
-{/* Popup */}
-{finished && (
-  <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
-    {/* Backdrop */}
-    <div className="absolute inset-0 bg-white/20 backdrop-blur-sm"></div>
+      {/* Popup */}
+      {finished && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-white/20 backdrop-blur-sm"></div>
 
-    {/* Popup card */}
-    <div className="relative bg-gradient-to-br from-pink-300/40 via-pink-200/30 to-white/40
+          {/* Popup card */}
+          <div
+            className="relative bg-gradient-to-br from-pink-300/40 via-pink-200/30 to-white/40
                     backdrop-blur-2xl border border-pink-200/30 rounded-2xl shadow-[0_8px_32px_rgba(255,182,193,0.37)]
-                    p-8 text-center z-10 max-w-md w-full mx-auto">
-      <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
-        Time’s Up!
-      </h2>
-      <button
-        onClick={handleClose}
-        className="px-6 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white font-medium rounded-full shadow-lg hover:shadow-xl active:scale-95 transition transform duration-150"
-      >
-        Close
-      </button>
-    </div>
-  </div>
-)}
+                    p-8 text-center z-10 max-w-md w-full mx-auto"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
+              Time’s Up!
+            </h2>
+            <button
+              onClick={handleClose}
+              className="px-6 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white font-medium rounded-full shadow-lg hover:shadow-xl active:scale-95 transition transform duration-150 focus:outline-none focus:ring-2 focus:ring-pink-200"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

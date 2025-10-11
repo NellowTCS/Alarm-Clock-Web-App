@@ -35,3 +35,6 @@ coverage/
 
 # Sensitive config files
 config.local.js
+
+desktop.ini
+.gitpod.yml

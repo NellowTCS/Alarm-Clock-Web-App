@@ -45,13 +45,15 @@ const App = () => {
   };
 
   return (
-      <div className="flex items-center justify-center min-h-screen p-4 relative"
+    <div
+      className="flex items-center justify-center min-h-screen p-4 relative"
       style={{
-        backgroundImage: "url('/rose-pattern.svg'), linear-gradient(to bottom right, #ffe4e6, #fff1f2)",
+        backgroundImage:
+          "url('/rose-pattern.svg'), linear-gradient(to bottom right, #ffe4e6, #fff1f2)",
         backgroundRepeat: "repeat",
-        backgroundSize: "150px"
-      }}>
-
+        backgroundSize: "150px",
+      }}
+    >
       <div className="w-80 h-[600px] bg-white bg-opacity-20 backdrop-blur-xl rounded-3xl shadow-xl overflow-hidden border border-white border-opacity-20">
         {/* Hidden audio element for alarms */}
         <audio ref={audioRef} src="/alarm.mp3" preload="auto" />

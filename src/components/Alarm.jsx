@@ -36,11 +36,11 @@ const Alarm = () => {
   /** Load alarms from localStorage on mount */
   useEffect(() => {
     const stored = loadAlarms();
-    if (stored.length > 0) {
-      setAlarms(stored);
-    } else {
-      // fallback demo alarms
-      setAlarms([
+    const hasInitialized = localStorage.getItem("alarms_initialized");
+
+    if (!hasInitialized && stored.length === 0) {
+      // Initialize with demo alarms on first load
+      const demoAlarms = [
         {
           id: "a1",
           time: "06:00",
@@ -68,15 +68,18 @@ const Alarm = () => {
           lastTriggeredAt: null,
           snoozedUntil: null,
         },
-      ]);
+      ];
+      setAlarms(demoAlarms);
+      saveAlarms(demoAlarms);
+      localStorage.setItem("alarms_initialized", "true");
+    } else {
+      setAlarms(stored);
     }
   }, []);
 
   /** Persist alarms whenever they change */
   useEffect(() => {
-    if (alarms.length > 0) {
-      saveAlarms(alarms);
-    }
+    saveAlarms(alarms);
   }, [alarms]);
 
   // Live ticking + alarm checks
@@ -95,7 +98,10 @@ const Alarm = () => {
           const snoozeDate = new Date(alarm.snoozedUntil);
           if (now >= snoozeDate && now - snoozeDate < 2 * 60 * 1000)
             shouldTrigger = true;
-        } else if (alarm.time === nowStr && shouldTriggerToday(alarm.repeat, now)) {
+        } else if (
+          alarm.time === nowStr &&
+          shouldTriggerToday(alarm.repeat, now)
+        ) {
           shouldTrigger = true;
         }
 
@@ -219,7 +225,9 @@ const Alarm = () => {
                   )}
                   <div className="mt-1 flex items-center text-xs text-pink-600">
                     <Clock size={12} className="mr-1" />
-                    {alarm.snoozedUntil ? "Snoozed — rings in" : "Rings in"}{" "}
+                    {alarm.snoozedUntil
+                      ? "Snoozed — rings in"
+                      : "Rings in"}{" "}
                     {getTimeUntil(alarm)}
                   </div>
                 </div>
@@ -332,7 +340,12 @@ const Alarm = () => {
               <div className="flex space-x-4 justify-center">
                 <button
                   onClick={() =>
-                    stopAlarm(ringingAlarm, audioRef, setAlarms, setRingingAlarm)
+                    stopAlarm(
+                      ringingAlarm,
+                      audioRef,
+                      setAlarms,
+                      setRingingAlarm
+                    )
                   }
                   className="flex-1 py-3 rounded-full bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-150"
                 >

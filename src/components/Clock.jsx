@@ -1,6 +1,6 @@
 // components/Clock.jsx
 import React, { useState, useEffect } from "react";
-import BackgroundBlob from './BackgroundBlob';
+import BackgroundBlob from "./BackgroundBlob";
 
 const Clock = () => {
   const [now, setNow] = useState(new Date());
@@ -25,9 +25,15 @@ const Clock = () => {
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-full bg-white bg-opacity-80 backdrop-blur-xl rounded-2xl p-6">
       <BackgroundBlob />
-      
+
       <div className="relative z-10 flex flex-col items-center">
-        <h2 className="text-gray-700 text-lg md:text-xl font-semibold mb-6 tracking-wide" style={{ fontFamily: "Georgia, serif" }}> Clock </h2>
+        <h2
+          className="text-gray-700 text-lg md:text-xl font-semibold mb-7 tracking-wide"
+          style={{ fontFamily: "Georgia, serif" }}
+        >
+          {" "}
+          Clock{" "}
+        </h2>
 
         <div className="relative mb-8">
           <svg
@@ -120,7 +126,6 @@ const Clock = () => {
             </span>
           </div>
         </div>
-
       </div>
     </div>
   );

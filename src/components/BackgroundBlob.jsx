@@ -1,9 +1,57 @@
 // components/BackgroundBlob.jsx
-import React from "react";
+import React, { useMemo } from "react";
 
 const BackgroundBlob = () => {
+  // Generate random values for each blob to make animations feel more random
+  const randomValues = useMemo(
+    () => ({
+      blob1: { duration: 3.5 + Math.random() * 2, delay: Math.random() * 4 },
+      blob2: { duration: 3.5 + Math.random() * 2, delay: Math.random() * 4 },
+      blob3: { duration: 3.5 + Math.random() * 2, delay: Math.random() * 4 },
+      blob4: { duration: 3.5 + Math.random() * 2, delay: Math.random() * 4 },
+      blob5: { duration: 3.5 + Math.random() * 2, delay: Math.random() * 4 },
+    }),
+    []
+  );
+
   return (
     <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        @keyframes float1 {
+          0%, 100% { transform: translate(-50%, -50%) rotate(25deg) translateY(0px) scale(1); }
+          25% { transform: translate(-50%, -50%) rotate(30deg) translateY(-15px) scale(0.98); }
+          50% { transform: translate(-50%, -50%) rotate(25deg) translateY(-30px) scale(1.02); }
+          75% { transform: translate(-50%, -50%) rotate(20deg) translateY(-15px) scale(0.98); }
+        }
+        @keyframes float2 {
+          0%, 100% { transform: translate(-50%, -50%) rotate(15deg) translateY(0px) scale(1); }
+          25% { transform: translate(-50%, -50%) rotate(10deg) translateY(15px) scale(0.98); }
+          50% { transform: translate(-50%, -50%) rotate(15deg) translateY(30px) scale(1.02); }
+          75% { transform: translate(-50%, -50%) rotate(20deg) translateY(15px) scale(0.98); }
+        }
+        @keyframes float3 {
+          0%, 100% { transform: translate(-50%, -50%) rotate(-15deg) translateY(0px) scale(1); }
+          25% { transform: translate(-50%, -50%) rotate(-10deg) translateY(-15px) scale(0.98); }
+          50% { transform: translate(-50%, -50%) rotate(-15deg) translateY(-30px) scale(1.02); }
+          75% { transform: translate(-50%, -50%) rotate(-20deg) translateY(-15px) scale(0.98); }
+        }
+        @keyframes float4 {
+          0%, 100% { transform: translate(-50%, -50%) rotate(120deg) translateY(0px) scale(1); }
+          25% { transform: translate(-50%, -50%) rotate(125deg) translateY(15px) scale(0.98); }
+          50% { transform: translate(-50%, -50%) rotate(120deg) translateY(30px) scale(1.02); }
+          75% { transform: translate(-50%, -50%) rotate(115deg) translateY(15px) scale(0.98); }
+        }
+        @keyframes float5 {
+          0%, 100% { transform: translate(-50%, -50%) rotate(90deg) translateY(0px) scale(1); }
+          25% { transform: translate(-50%, -50%) rotate(95deg) translateY(-15px) scale(0.98); }
+          50% { transform: translate(-50%, -50%) rotate(90deg) translateY(-30px) scale(1.02); }
+          75% { transform: translate(-50%, -50%) rotate(85deg) translateY(-15px) scale(0.98); }
+        }
+      `,
+        }}
+      />
       {/* Central large blob */}
       <div
         aria-hidden
@@ -14,6 +62,7 @@ const BackgroundBlob = () => {
           borderRadius: "63% 37% 54% 46% / 55% 48% 52% 45%",
           transform: "translate(-50%, -50%) rotate(25deg)",
           zIndex: 0,
+          animation: `float1 ${randomValues.blob1.duration}s ease-in-out ${randomValues.blob1.delay}s infinite`,
         }}
       />
 
@@ -27,6 +76,7 @@ const BackgroundBlob = () => {
           borderRadius: "45% 55% 68% 32% / 42% 58% 37% 63%",
           transform: "translate(-50%, -50%) rotate(15deg)",
           zIndex: 1,
+          animation: `float2 ${randomValues.blob2.duration}s ease-in-out ${randomValues.blob2.delay}s infinite`,
         }}
       />
 
@@ -40,6 +90,7 @@ const BackgroundBlob = () => {
           borderRadius: "55% 45% 32% 68% / 43% 57% 62% 38%",
           transform: "translate(-50%, -50%) rotate(-15deg)",
           zIndex: 1,
+          animation: `float3 ${randomValues.blob3.duration}s ease-in-out ${randomValues.blob3.delay}s infinite`,
         }}
       />
 
@@ -53,6 +104,7 @@ const BackgroundBlob = () => {
           borderRadius: "67% 33% 48% 52% / 42% 58% 37% 63%",
           transform: "translate(-50%, -50%) rotate(120deg)",
           zIndex: 0,
+          animation: `float4 ${randomValues.blob4.duration}s ease-in-out ${randomValues.blob4.delay}s infinite`,
         }}
       />
 
@@ -66,6 +118,7 @@ const BackgroundBlob = () => {
           borderRadius: "53% 47% 37% 63% / 48% 52% 62% 38%",
           transform: "translate(-50%, -50%) rotate(90deg)",
           zIndex: 0,
+          animation: `float5 ${randomValues.blob5.duration}s ease-in-out ${randomValues.blob5.delay}s infinite`,
         }}
       />
     </>

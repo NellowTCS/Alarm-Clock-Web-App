@@ -1,17 +1,28 @@
-// components/Stopwatch.jsx
 import React, { useState, useRef, useEffect } from "react";
 import BackgroundBlob from "./BackgroundBlob";
 
 const Stopwatch = () => {
-  const [time, setTime] = useState(0 * 3600 + 5 * 60 + 5);
+  const [time, setTime] = useState(0); // Initialize time state
   const [running, setRunning] = useState(false);
   const intervalRef = useRef(null);
+
+  // Load time from localStorage on mount
+  useEffect(() => {
+    const savedTime = parseInt(localStorage.getItem("stopwatch_time"), 10);
+    if (!isNaN(savedTime)) {
+      setTime(savedTime);
+    }
+  }, []);
+
+  // Save time to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("stopwatch_time", time);
+  }, [time]);
 
   // Start the stopwatch
   const start = () => {
     if (!running) {
       setRunning(true);
-      // Ensure only one interval exists
       intervalRef.current = setInterval(() => {
         setTime((prev) => prev + 1);
       }, 1000);
@@ -20,15 +31,20 @@ const Stopwatch = () => {
 
   // Stop the stopwatch
   const stop = () => {
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
-    setRunning(false);
+    if (running) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+      setRunning(false);
+      // Ensure the current time is saved to localStorage
+      localStorage.setItem("stopwatch_time", time);
+    }
   };
 
   // Reset the stopwatch
   const reset = () => {
     stop();
     setTime(0);
+    localStorage.removeItem("stopwatch_time"); // Clear saved time
   };
 
   // Format seconds into HH:MM:SS
@@ -49,7 +65,12 @@ const Stopwatch = () => {
       <BackgroundBlob />
 
       <div className="relative z-10 flex flex-col items-center">
-        <h2 className="text-gray-700 text-lg md:text-xl font-semibold mb-6 tracking-wide" style={{ fontFamily: "Georgia, serif" }}>Stopwatch</h2>
+        <h2
+          className="text-gray-700 text-lg md:text-xl font-semibold mb-6 tracking-wide"
+          style={{ fontFamily: "Georgia, serif" }}
+        >
+          Stopwatch
+        </h2>
 
         {/* Circular progress */}
         <div className="relative mb-8">
@@ -84,7 +105,9 @@ const Stopwatch = () => {
               running ? "animate-pulse-text" : ""
             }`}
           >
-            <span className="text-2xl font-light text-gray-700">{format(time)}</span>
+            <span className="text-2xl font-light text-gray-700">
+              {format(time)}
+            </span>
           </div>
         </div>
 

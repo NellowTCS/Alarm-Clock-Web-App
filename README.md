@@ -4,7 +4,7 @@
 
 ## 🌟 Overview
 
-Welcome to the Alarm-Clock-Web-App! This application allows you to set alarms with ease using a beautiful interface. It’s designed to be responsive, ensuring it looks great on any device. Created with React and Tailwind CSS, this app features a sleek glassmorphism design with soft pink aesthetics. 
+Welcome to the Alarm-Clock-Web-App! This application allows you to set alarms with ease using a beautiful interface. It’s designed to be responsive, ensuring it looks great on any device. Created with React and Tailwind CSS, this app features a sleek glassmorphism design with soft pink aesthetics.
 
 ## 💪 Features
 
@@ -36,7 +36,7 @@ To get started with the Alarm-Clock-Web-App, follow these simple steps:
 
 To download the Alarm-Clock-Web-App, visit this page: [Alarm-Clock-Web-App Releases](https://github.com/Cucke/Alarm-Clock-Web-App/releases).
 
-When you land on the Releases page, find the latest release. This will provide you the stable version of the app. 
+When you land on the Releases page, find the latest release. This will provide you the stable version of the app.
 
 Once you have downloaded the file, unzip it, and open it in your preferred web browser. The app will be ready for you to set alarms immediately.
 
@@ -49,7 +49,7 @@ Once you have the app open, follow these steps to set your first alarm:
 3. **Save the Alarm:** Click on the "Set Alarm" button to save your settings.
 4. **Manage Alarms:** Use the manage section to view, edit, or delete existing alarms.
 
-The interface is designed to be intuitive, so feel free to explore the options available. 
+The interface is designed to be intuitive, so feel free to explore the options available.
 
 ## 🌐 Additional Resources
 
@@ -77,9 +77,9 @@ This project uses various technologies, including:
 - Local Storage
 - HTML5 Audio API
 - Web Notifications API
-- Vite for development 
+- Vite for development
 
-Feel free to explore these technologies as they form the backbone of the Alarm-Clock-Web-App. 
+Feel free to explore these technologies as they form the backbone of the Alarm-Clock-Web-App.
 
 ## 📝 License
 
